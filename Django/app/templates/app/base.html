@@ -1,0 +1,71 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="\images\product\zyro-image_dI4FUcF.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/88cd9f507c.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+   
+    <link rel="stylesheet" href="{% static 'app/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/message.css' %}">
+    <script src="{% static 'app\js\base.js' %}"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="message">
+            <ul>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="notification">
+                            <span>{{message}}</span>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="\images\product\zyro-image_dI4FUcF.ico" alt="">
+                    <span>CodeInfo</span>
+                </div>
+                <div class="menu-list">
+                    <span>Menu</span>
+                    <a href="/home"><i class="fa-solid fa-table-columns"></i>Home</a>
+                    <a href="/captcha"><i class="fa-solid fa-table-columns"></i>Captcha</a>
+                    <a href="#"><i class="fa-solid fa-table-columns"></i>Doc</a>
+                    <a href="#"><i class="fa-solid fa-table-columns"></i>Doc</a>
+                </div>
+                <div class="menu-list">
+                    <span>Work</span>
+                    <a href="/document"><i class="fa-solid fa-table-columns"></i>Document</a>
+                    <a href="/swagger"><i class="fa-solid fa-table-columns"></i>Swagger</a>
+                </div>
+                <div class="menu-list">
+                    <span>Logout</span>
+                    <a href="/logout"><i class="fa-solid fa-table-columns"></i>Logout</a>
+        
+                </div>
+            </div>
+        </nav>
+        <div class="extend-content">
+            {% block main-content %}
+            {% endblock main-content %}
+        </div>
+     
+    </div>
+</body>
+<!-- <footer>
+    <div class="end-page">
+        Copyright @ 2018-2023. All rights reserved.support@eldorado.gg       
+    </div>
+</footer> -->
+</html>

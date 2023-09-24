@@ -1,0 +1,48 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block main-content %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'app/css/home.css' %}">
+{% endblock styles %}
+
+<div class="container-home">
+    <div class="content account-content">
+        <div>
+            <h2 class="title">Account</h2>
+        </div>
+        <div class="info">
+            <div>
+                <h6>Name : {{user}}</h6>
+            </div>
+            <div>
+                <h6>Balance : {{user.balance}} [$]</h6>
+            </div>
+            <div>
+                <h6>Role : {{user.role}}</h6>
+            </div>
+        </div>
+    </div>
+    <div class="content list-item-content">
+        <div>
+            <h2 class="title">Product</h2>
+        </div>
+        <div class="info info-item">
+            <div class="list-item">
+                {% for product in products %}
+                <div class="item">
+                    <div>
+                        <img src="{{product.getUrlImage}}" alt="">
+                    </div>
+                    <div>
+                        <div><label for="">{{product.productName}}</label></div>
+                        <div>Price:<label for="">{{product.productPrice}}</label></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

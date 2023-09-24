@@ -1,0 +1,61 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block main-content %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'app/css/document.css' %}">
+{% endblock styles %}
+
+<div class="container-document">
+    <div class="content">
+        <div>
+            <h2 class="title">Token</h2>
+        </div>
+        <div class="info">
+            <h6>- AccessToken:</h6>
+            <div class="copy-token">
+                <div class="jwtToken-scrollable">
+                    <p class="jwtToken" id="accessToken">{{accessToken}}</p>
+                </div>
+                <button class="copy-button" onclick="toggleCopyIcon('.jwtToken', this)">
+                    <i class="icon icon1 fa-regular fa-copy" style="display: block;"></i>
+                    <i class="icon icon2 fa-solid fa-check" style="display: none;"></i>
+                </button>
+            </div>
+
+            <h6>- RefreshToken:</h6>
+            <div class="copy-token">
+                <div class="jwtToken-scrollable">
+                    <p class="jwtToken" id="refreshToken">{{refreshToken}}</p>
+                </div>
+                <button class="copy-button" onclick="toggleCopyIcon('.jwtToken', this)">
+                    <i class="icon icon1 fa-regular fa-copy" style="display: block;"></i>
+                    <i class="icon icon2 fa-solid fa-check" style="display: none;"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div>
+            <h2 class="title">Token</h2>
+        </div>
+        <div class="info">
+            <div class="copy-token">
+                <div class="jwtToken-scrollable">
+                    <p class="jwtToken">Nam An Cuc</p>
+                </div>
+                <button id="copyButton" class="copy-button">Copy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block script %}
+<script src="{% static 'app/js/document.js' %}"></script>
+{% endblock script %}
+
+
+
+{% endblock main-content %}
+

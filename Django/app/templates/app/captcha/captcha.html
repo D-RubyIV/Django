@@ -1,0 +1,153 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block main-content %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'app/css/captcha.css' %}">
+{% endblock styles %}
+
+<div class="container-captcha">
+    <div class="content">
+        <div>
+            <h2 class="title">Captcha</h2>
+        </div>
+        <div class="info">
+
+            <div class="">
+                <h6>- Text Orc</h6>
+                <button type="button" class="collapsible">
+                    <span>Open Collapsible</span>
+                    <i class="fa-solid fa-chevron-down dropdown" style="display: block;"></i>
+                    <i class="fa-solid fa-chevron-up dropup" style="display: none;"></i>
+                </button>
+                <div class="captcha-content" style="display: block;">
+                    <div class="url-content">
+                        <div class="url-scrollable">
+                            <span class="url">BASE?key={YOUR_APIKEY}&method={METHOD}&googlekey={GOOGLEKEY}&pageurl={PAGEURL}</span>
+                        </div>
+                        <button class="copy-button" onclick="toggleCopyIcon('.url', this)">
+                            <i class="icon icon1 fa-regular fa-copy" style="display: block;"></i>
+                            <i class="icon icon2 fa-solid fa-check" style="display: none;"></i>
+                        </button>
+    
+                    </div>
+                    <div class="expand">
+                        <form class="orc-slover" method="post" enctype="multipart/form-data">
+                            <div class="">
+                                <div class="upload-file">
+                                    <input type="file" id="fileInput" name="file">
+                                </div>
+                            </div>
+                            <div class="form-submit">
+                                <div class="radio-container">
+                                    <div><label for="rbo1" class="lbORC"><input type="radio" id="rbo1" value="1" class="rdoORC" name="rdoSelected" checked>Engine1 (Default, fast, most OCR languages)</label></div>
+                                    <div><label for="rbo2" class="lbORC"><input type="radio" id="rbo2" value="2" class="rdoORC" name="rdoSelected">Engine2 (Support for numbers and special characters)</label></div>
+                                    <div><label for="rbo3" class="lbORC"><input type="radio" id="rbo3" value="3" class="rdoORC" name="rdoSelected">Engine3 (Experimental, a little slower for larger images)</label></div>
+                                </div>
+                                <div>
+                                    <div>
+                                        <button class="btn-submit" type="button">Submit<span class="loader"></span></button>
+                                    </div>
+                                    <div class="result-content">
+                                        <div><p>Result:</p></div>
+                                        <div><p class="result-captcha">.....</p></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                     
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+               
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+{% block script %}
+<script src="{% static 'app/js/captcha.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+const sendButton = document.querySelector('.btn-submit');
+const responseDiv = document.querySelector('.result-captcha');
+const message = document.querySelector(".message ul")
+var isRequestInProgress = false;
+sendButton.addEventListener('click', () => {
+    sendButton.classList.add('loading');
+    if(!isRequestInProgress){
+        isRequestInProgress = true
+        var formData = new FormData(document.querySelector('.orc-slover'));
+        fetch('/fetchtest/', {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': getCookie('csrftoken'),  // For CSRF protection
+            },
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            responseDiv.textContent = data.message;
+        })
+        .finally(function() {
+                isRequestInProgress = false;
+                console.log("Done")
+                sendButton.classList.remove('loading');
+                message.innerHTML = '<div class="notification"><span>Done</span></div>'
+                showMessageEventLoad()
+               
+        });
+    
+     
+    
+    }
+    else{
+        message.innerHTML = '<div class="notification"><span>Error</span></div>'
+        showMessageEventLoad()
+    }
+});
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+function showMessageEventLoad(){
+    const notifications = document.querySelectorAll(".notification");
+    notifications.forEach(function (notification, index) {
+        setTimeout(function () {
+            notification.style.opacity = "1"; // Rõ dần
+            notification.style.transform = "translateX(0)"; // Xuất hiện từ phải sang
+            setTimeout(function () {
+                notification.style.opacity = "0"; // Mờ dần
+                notification.style.transform = "translateX(100%)"; // Biến mất vào lề bên phải
+                setTimeout(function () {
+                    notification.style.display = "none"; // Biến mất hoàn toàn
+                }, 1000); // Thời gian mờ dần
+            }, 4000); // Thời gian hiển thị
+        }, index * 300); // Thời gian delay
+    });
+}
+
+
+
+</script>
+{% endblock script %}
+
+{% endblock main-content %}

@@ -1,0 +1,6 @@
+django-recaptcha
+djangorestframework
+djangorestframework-simplejwt
+rest_framework_simplejwt
+django-ckeditor
+drf-yasg

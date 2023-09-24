@@ -1,0 +1,67 @@
+.container-document {
+    margin-top: 50px;
+}
+
+.content {
+    padding: 0 20px;
+}
+
+.info {
+    width: 100%;
+    padding: 20px;
+}
+
+.title {
+    color: orange;
+}
+
+.jwtToken-scrollable {
+    overflow-y: hidden;
+    overflow-x: scroll;
+    background-color: #333333;
+    padding: 5px 10px;
+    border-radius: 3px 3px 3px;
+
+    /* Cho phép cuộn khi nội dung vượt quá chiều cao */
+}
+/* Tạo thanh cuộn tùy chỉnh */
+.jwtToken-scrollable::-webkit-scrollbar {
+    height: 4px; /* Độ dày thanh cuộn ngang */
+}
+
+.jwtToken-scrollable::-webkit-scrollbar-thumb {
+    border: none;
+    background-color: orange; /* Màu của thanh cuộn */
+    border-radius: 4px; /* Bo tròn viền thanh cuộn */
+}
+.jwtToken-scrollable::-webkit-scrollbar-thumb:hover {
+    background-color: red; /* Màu của thanh cuộn */
+}
+.jwtToken-scrollable::-webkit-scrollbar-track {
+    border-radius: 2px;
+    border: none;
+    background-color: white; /* Màu của phần nền của thanh cuộn */
+}
+.copy-token{
+    display: flex;
+    padding-bottom: 10px;
+}
+.jwtToken {
+    width: 100%;
+    margin: 0;
+    font-size: 11px;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+.copy-button{
+    padding: 5px;
+    background-color: #242526;
+    background-color: #166b53;
+    border: none; /* Loại bỏ viền */
+    border: 1px solid white;
+    border-radius: 3px;
+}
+.icon{
+    font-size: 12px;
+}

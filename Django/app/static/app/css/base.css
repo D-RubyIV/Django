@@ -1,0 +1,165 @@
+
+:root {
+    --main-color: #007bff;
+    --font-size: 16px;
+    --width-side-menu: 58px
+}
+
+*{
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    
+}
+.extend-content{
+    width: calc(100% - var(--width-side-menu));
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-direction: row;
+}
+.g-recaptcha {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+body{
+    position: relative;
+    background-color: #18191a;
+}
+nav{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 58px;
+    /* width: 180px; */
+    height: 100vh;
+    transition: 0.2s linear;
+    background-color: #242527;
+    z-index: 9998;
+}
+nav span{
+    font-size: 11px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+nav:hover{
+    width: 180px;
+}
+.navbar{
+    padding: 5px;
+    height: 100vh;
+}
+.logo{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #333333;
+    padding: calc(0.5rem - 4px);
+    overflow: hidden;
+}
+.logo img{
+    width: 40px;
+}
+.logo span{
+    font-size: 12px;
+    font-weight: bold;
+    color: rgb(39, 39, 39);
+    padding-left: 10px;
+    text-transform: uppercase;
+}
+.menu-list{
+    width: 100%;
+    display: flex;
+    margin-top: 0.5rem;
+    flex-direction: column;
+    background-color: #333333;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.menu-list a{
+    display: flex;
+    align-items: center;
+    padding: 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    overflow: hidden;
+}
+.menu-list i{
+    font-size: 1.2rem;
+    margin: 0 1.8rem 0 0.3rem;
+}
+/*  */
+.menu-content{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.transparent-button {
+    background-color: transparent; /* Loại bỏ nền */
+    border: none; /* Loại bỏ viền */
+    cursor: pointer; /* Đổi con trỏ chuột khi hover */
+    border: 1px solid gray;
+    padding: 0 5px;
+}
+.menu-content .fa-solid{
+    background-color: transparent;
+}
+
+.menu-container {
+    display: flex;
+}
+
+.slide-menu {
+    width: 0;
+    height: 100vh;
+    background-color: #18191a;
+    overflow-x: hidden;
+    transition: 0.3s;
+}
+
+.show-menu .slide-menu {
+    width: 250px;
+}
+
+#toggle-button {
+    z-index: 1;
+}
+
+
+/* End Page */
+.end-page{
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    background-color: orange;
+    padding: 5px;
+    text-align: center;
+    color: black;
+    font-size: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+    nav{
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+}
+
+@media screen and (max-height: 500px) {
+
+}
